@@ -13,7 +13,7 @@ def get_requirements(file_path: str)-> list[str]:
     return requirements 
 
 setup(
-    name='image-capgen',
+    name='Image-Captioning',
     version='0.0.1',
     author='Hydrogen Cyanide',
     author_email = '--',

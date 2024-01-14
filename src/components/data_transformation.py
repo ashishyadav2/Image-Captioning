@@ -6,22 +6,20 @@ from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras import models
 from tensorflow.keras.preprocessing import image, text
 from src.utils import save_object
-from data_ingestion import DataIngestionConfig, DataIngestion
 import re
 from src.utils import load_object, save_object
-from typing import List
 
 
 @dataclass
 class DataTransformationConfig:
-    DS_PATH: str = os.path.join(
-        os.path.dirname(os.path.dirname(os.getcwd())), "artifacts"
-    )
+    DS_PATH: str = os.path.join(os.getcwd(), "artifacts")
     image_feature_map: str = os.path.join(DS_PATH, "image_feature_map.pkl")
     image_caption_map: str = os.path.join(DS_PATH, "image_caption_map.pkl")
     all_captions: str = os.path.join(DS_PATH, "all_captions.pkl")
     max_caption_len: int = 0
     vocab_size: int = 0
+    tokenizer = None
+    image_ids = []
 
 
 class FeatureExtractionModel:
@@ -34,20 +32,19 @@ class FeatureExtractionModel:
 
 
 class DataTransformation:
-    def __init__(self):
+    def __init__(self, train_split, test_split, IMAGE_DIR, CAPTIONS_FILE_PATH):
         self.data_transformation_config = DataTransformationConfig()
-        self.data_ingestion_config = DataIngestionConfig()
-        self.data_ingestion = DataIngestion()
+        self.train_split = train_split
+        self.test_split = test_split
+        self.IMAGE_DIR = IMAGE_DIR
+        self.CAPTIONS_FILE_PATH = CAPTIONS_FILE_PATH
 
     def initiate_data_transformation(self):
         logging.info("data transformation initiated")
-        IMAGE_DIR = self.data_ingestion_config.IMAGE_DIR_PATH
-        self.extract_feature(IMAGE_DIR)
-        CAPTIONS_FILE_PATH = self.data_ingestion_config.CAPTIONS_FILE_PATH
-        self.preprocess_caption(CAPTIONS_FILE_PATH)
+        # self.extract_feature(self.IMAGE_DIR)
+        self.preprocess_caption(self.CAPTIONS_FILE_PATH)
         self.preprocessing_text()
         self.tokenizing_and_fitting_text()
-        self.train_test_split()
 
     def extract_feature(self, IMAGE_DIR):
         """
@@ -58,7 +55,7 @@ class DataTransformation:
         image_feature_map = {}
         feature_extractor_model = FeatureExtractionModel()
         try:
-            for image_name in os.listdir(IMAGE_DIR)[:3]:
+            for image_name in os.listdir(IMAGE_DIR):
                 img_path = os.path.join(IMAGE_DIR, image_name)
                 img = image.load_img(img_path, target_size=(224, 224))
                 img = image.img_to_array(img)
@@ -136,9 +133,9 @@ class DataTransformation:
     def tokenizing_and_fitting_text(self):
         logging.info("tokenizing and fitting on text started")
         all_captions = load_object(self.data_transformation_config.all_captions)
-        tokenizer = text.Tokenizer()
-        tokenizer.fit_on_texts(all_captions)
-        self.data_transformation_config.vocab_size = len(tokenizer.word_index) + 1
+        self.data_transformation_config.tokenizer = text.Tokenizer()
+        self.data_transformation_config.tokenizer.fit_on_texts(all_captions)
+        self.data_transformation_config.vocab_size = len(self.data_transformation_config.tokenizer.word_index) + 1
         self.data_transformation_config.max_caption_len = max(
             len(caption.split()) for caption in all_captions
         )
@@ -146,16 +143,14 @@ class DataTransformation:
 
     def train_test_split(self):
         logging.info("spliting into train and test set")
-        train_split, test_split = self.data_ingestion.initiate_data_ingestion()
         image_caption_map = load_object(
             self.data_transformation_config.image_caption_map
         )
-        image_ids = list(image_caption_map.keys())
-        train_set = image_ids[:train_split]
-        test_set = image_ids[train_split:]
+        self.data_transformation_config.image_ids = list(image_caption_map.keys())
+        train_set = self.data_transformation_config.image_ids[: self.train_split]
+        test_set = self.data_transformation_config.image_ids[self.train_split :]
         return (train_set, test_set)
 
-
-if __name__ == "__main__":
-    data_transformation_obj = DataTransformation()
-    data_transformation_obj.initiate_data_transformation()
+    def get_config(self):
+        return self.data_transformation_config
+        

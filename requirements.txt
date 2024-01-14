@@ -6,5 +6,7 @@ matplotlib
 seaborn
 tqdm
 nltk
-re
+pydot
+keras
+graphviz
 -e .
