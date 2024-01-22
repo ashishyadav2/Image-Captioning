@@ -37,7 +37,7 @@ def save_model(self,file_path):
             logging.info(f"Error in saving object")
             raise CustomException(e)
         
-def load_keras_model(self,file_path):
+def load_keras_model(file_path):
     try:
         model = models.load_model(file_path)
         logging.info("model loaded")

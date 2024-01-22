@@ -8,7 +8,8 @@ from src.utils import load_object, save_model
 
 
 class ModelTrainer:
-    def __init__(self, data_transformation_config, train_set, test_set, model):
+    def __init__(self, train_set, test_set, model):
+        data_transformation_config = load_object(os.path.join(os.getcwd(),"artifacts","data_transformation_config.pkl"))
         self.max_caption_len = data_transformation_config.max_caption_len
         self.vocab_size = data_transformation_config.vocab_size
         self.image_names = data_transformation_config.image_ids
@@ -23,7 +24,7 @@ class ModelTrainer:
         self.test_set = test_set
         self.model = model
         self.file_path = data_transformation_config.DS_PATH
-        self.model_path = os.path.join(self.file_path, "model.keras")
+        self.model_path = os.path.join(self.file_path, "vgg16_lstm_model_v2.h5")
 
     def __data_generator(self, batch_size=32):
         X1, X2, y = list(), list(), list()
@@ -66,7 +67,7 @@ class ModelTrainer:
             #     data_gen = self.__data_generator()
             #     self.model.fit(data_gen, epochs=1, steps_per_epoch=steps, verbose=0)
             logging.info("model training completed")
-            save_model(self.model_path)
+            # save_model(self.model_path)
 
         except Exception as e:
             logging.info("error in model training")

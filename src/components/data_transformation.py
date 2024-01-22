@@ -15,6 +15,7 @@ class DataTransformationConfig:
     DS_PATH: str = os.path.join(os.getcwd(), "artifacts")
     image_feature_map: str = os.path.join(DS_PATH, "image_feature_map.pkl")
     image_caption_map: str = os.path.join(DS_PATH, "image_caption_map.pkl")
+    data_trans_config: str = os.path.join(DS_PATH, "data_transformation_config.pkl")
     all_captions: str = os.path.join(DS_PATH, "all_captions.pkl")
     max_caption_len: int = 0
     vocab_size: int = 0
@@ -45,6 +46,7 @@ class DataTransformation:
         self.preprocess_caption(self.CAPTIONS_FILE_PATH)
         self.preprocessing_text()
         self.tokenizing_and_fitting_text()
+        self.save_config()
 
     def extract_feature(self, IMAGE_DIR):
         """
@@ -152,5 +154,8 @@ class DataTransformation:
         return (train_set, test_set)
 
     def get_config(self):
-        return self.data_transformation_config
+        return load_object(self.data_transformation_config.data_trans_config)
+    
+    def save_config(self):
+        save_object(self.data_transformation_config.data_trans_config,self.data_transformation_config)
         

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        label:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #captionText {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #uploadedImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Caption Generator</h1>
+    </header>
+
+    <div id="container">
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="imageInput" accept="image/*" required>
+            <label for="imageInput">Choose Image</label>
+            <button type="button" onclick="generateCaption()">Generate Caption</button>
+        </form>
+
+        <div id="output">
+            <h2>Generated Caption:</h2>
+            <p id="captionText"></p>
+            <img id="uploadedImage" alt="Uploaded Image">
+        </div>
+    </div>
+</body>
+</html>
