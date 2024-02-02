@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --accent : #000000;
+    --secondary : #1DE9B6;
+    --white  : #eeeeee;
+    --hover: #BEADFA;
+    --text: #1D2B53;
+    --font-1: rockwell;
+    --font-2: verdana;
+}
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--accent); */
+    background-image: url("https://img.freepik.com/premium-vector/new-soft-pastel-blur-gradient-background_92086-57.jpg");
+    /* background-image: url("https://i.ytimg.com/vi/VfxG8_CrJ0c/maxresdefault.jpg"); */
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.form-container {
+    border-radius: 25px;
+    width: 50%;
+    height: auto;
+    margin: 100px 0;
+}
+.sidebar {
+    width: 35%;
+    height: 100%;
+    background: var(--secondary);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.sidebar img {
+    width: 100%;
+}
+.sidebar p {
+    font-size: 2rem;
+    font-family: var(--font-1);
+    width: 80%;
+    color:var(--accent)
+}
+form {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    padding: 100px 0;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(30px);
+    /* background-color: transparent; */
+    border-radius: 25px;
+}
+form h1 {
+    font-size: 5rem;
+    color:var(--accent);
+    font-family: var(--font-1);
+    margin: 0 0 50px 0;
+}
+input {
+    width: 50%;
+    padding: 15px 15px;
+    /* border: 2px solid var(--white); */
+    /* background: var(--white); */
+    outline: none;
+    margin-bottom: 25px;
+    font-size: 1.01rem;
+    border-radius: 25px;
+}
+label {
+    width: 50%;
+    padding: 0 0 10px 5px;
+    font-size: 1.1rem;
+}
+.terms {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.01rem;
+}
+.terms input {
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+.terms p{
+    padding-left: 15px;
+}
+.terms a{
+    color:var(--accent);
+    text-decoration-color: var(--secondary);
+}
+.btn {
+    width: 20%;
+    padding: 15px 0;
+    border:none;
+    outline: none;
+    background: var(--accent);
+    color:var(--white);
+    /* font-size:1.1rem; */
+    margin-top: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 25px;
+    font-family: var(--font-2);
+}
+.btn:hover {
+    background-color: var(--hover);
+    color: var(--text);
+}
+form .caption {
+    font-size: 1.3rem;
+    width: 75%;
+    padding: 50px 0 50px 0;
+    text-align: center;
+    font-family: var(--font-2);
+}
+form .imagebox {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+form .imagebox img{
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 0 50px -10px rgba(0, 0, 0, 0.2);
+}
+
+
+input[type="file"]::file-selector-button {
+    padding: 0 16px;
+    height: 45px;
+    cursor: pointer;
+    color: var(--white);
+    background-color: var(--accent);
+    border: none;
+    margin-right: 16px;
+    border-radius: 25px;
+    transition: 0.3s;
+    width: 40%;
+    font-family: var(--font-2);
+  }
+
+
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--hover);
+    color: var(--text);
+}
+
+input[type="file"]::file-selector-button:active {
+    background-color: var(--accent);
+}
+label {
+    text-align: center;
+    margin: 20px 0 10px 0 ;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    width: auto;
+    font-family: var(--font-2);
+}
+
+@media screen and (max-width: 1400px) {
+    .form-container {
+        width: 70%;
+    }
+    form h1 {
+        font-size: 4.5rem;
+    }
+    label {
+        width: 90%;
+        font-size: 1rem;
+    }
+    .btn {
+        width: 30%;
+    }
+    form .caption {
+        font-size: 1.3rem;
+        width: 75%;
+    }
+    form .imagebox {
+        width: 65%;
+    }
+    input[type="file"]::file-selector-button {
+        width: 50%;
+      }
+  }
+@media screen and (max-width: 1000px) {
+    .form-container {
+        width: 85%;
+    }
+    form h1 {
+        font-size: 4rem;
+    }
+    label {
+        width: 90%;
+        font-size: 1rem;
+    }
+    .btn {
+        width: 25%;
+    }
+    form .caption {
+        font-size: 1.2rem;
+        width: 75%;
+    }
+    form .imagebox {
+        width: 70%;
+    }
+    input[type="file"]::file-selector-button {
+        width: 50%;
+      }
+  }
+@media screen and (max-width: 750px) {
+    .form-container {
+        width: 97%;
+    }
+    form h1 {
+        font-size: 3.5rem;
+    }
+    label {
+        width: 90%;
+        font-size: 1rem;
+    }
+    .btn {
+        width: 50%;
+    }
+    form .caption {
+        font-size: 1rem;
+        width: 95%;
+    }
+    form .imagebox {
+        width: 90%;
+    }
+    input[type="file"]::file-selector-button {
+        width: 80%;
+      }
+  }
+@media screen and (max-width: 500px) {
+    .form-container {
+        width: 97%;
+    }
+    form h1 {
+        font-size: 2.5rem;
+    }
+    label {
+        width: 90%;
+        font-size: 1rem;
+    }
+    .btn {
+        width: 50%;
+    }
+    form .caption {
+        font-size: 1rem;
+        width: 95%;
+    }
+    form .imagebox {
+        width: 90%;
+    }
+    input[type="file"]::file-selector-button {
+        width: 80%;
+      }
+  }

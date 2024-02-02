@@ -3,42 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static',filename='predict.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
     <link rel="shortcut icon" href="{{url_for('static',filename='favicon.png')}}">
     <title>Prediction</title>
 </head>
 <body>
     <div class="form-container">
-        <form action="{{url_for('predict')}}" method="post" enctype="multipart/form-data">
-            <h1>Upload Image</h1>
-
-            <label>File name: {{file_name}}</label>
-            <input type="file" name="image_file"/>
-
-            <!-- <label>Password</label>
-            <input type="password"> -->
-
-            <!-- <div class="terms">
-                <input type="checkbox">
-                <p>I agree to <a href="#">Terms and Conditions</a>
-                and <a href="#">Privacy Policy</a></p>
-            </div> -->
+        <form action="{{url_for('predict')}}" method="get" enctype="multipart/form-data">
+            <h1>Captioninator</h1>
 
             <div class="imagebox">
-                <!-- <img src="{{image_path}}"> -->
                 <img src="{{image_path}}">
-                <!-- <img src="https://thumbs.dreamstime.com/b/hike-road-along-braies-lake-dolomites-trentino-alto-adige-italy-autumn-day-braies-lake-dolomites-trentino-alto-adige-italy-102957532.jpg"> -->
-
+                
+            <label>{{file_name}}</label>
             </div>
             
             <input type="submit" value="Generate" name="submit_btn" class="btn"/>
-            <div class="caption">{{caption}}</div>
-            <p>Made with &#x2764; by <a href="https://github.com/ashishyadav2">Ashish.</a></p>
+            <div class="caption">"{{caption}}"</div>    
+            <!-- <p>Made with &#x2764; by <a href="https://github.com/ashishyadav2">Ashish.</a></p> -->
         </form>
 
     </div>
     <script>
-
     </script>
 </body>
 </html>
