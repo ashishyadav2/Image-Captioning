@@ -9,7 +9,7 @@ from src.utils import load_object, load_keras_model
 
 class PredictPipeline:
     def __init__(
-        self,
+        self,model_name
     ):
         data_transformation_config = load_object(
             os.path.join(os.getcwd(), "artifacts", "data_transformation_config.pkl")
@@ -23,7 +23,7 @@ class PredictPipeline:
             data_transformation_config.image_feature_map
         )
         self.model = load_keras_model(
-            os.path.join(os.getcwd(), "artifacts", "vgg16_lstm_model_v2.h5")
+            os.path.join(os.getcwd(), "artifacts", model_name)
         )
         self.index_word_map = {
             index: word for word, index in self.tokenizer.word_index.items()

@@ -11,6 +11,7 @@
     --text: #1D2B53;
     --font-1: rockwell;
     --font-2: verdana;
+    --error: #FF6868;
 }
 body {
     width: 100%;
@@ -29,6 +30,8 @@ body {
     width: 50%;
     height: auto;
     margin: 100px 0;
+    position: relative;
+
 }
 .sidebar {
     width: 35%;
@@ -177,7 +180,33 @@ label {
     width: auto;
     font-family: var(--font-2);
 }
-
+#error_messages {
+    width: 30%;
+    padding: 15px;
+    color: var(--white);
+    background-color: var(--error);
+    border-radius: 25px;
+    font-family: var(--font-2);
+    position: fixed;
+    text-align: center;
+    left: auto;
+    top: 50px;
+    box-shadow: 0 0 50px 5px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    /* visibility: hidden; */
+}
+/* #error_messages .expanded {
+    visibility: hidden;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+} */
 @media screen and (max-width: 1400px) {
     .form-container {
         width: 70%;
