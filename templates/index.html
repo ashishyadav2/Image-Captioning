@@ -12,14 +12,14 @@
         <form action="/" method="post" enctype="multipart/form-data">
             <h1>Captioninator</h1>
 
-            <input type="file" name="image_file" id="imageInput"/>
+            <input type="file" name="image_file" id="imageInput" accept="image/png, image/jpg, image/jpeg"/>
             <div class="imagebox">
                 <img src="{{image_path}}">
             <label>{{file_name}}</label>
             </div>
             
             <input type="submit" value="Upload Image" name="submit_btn" class="btn"/>
-            <div class="caption">"{{caption}}"</div>
+            <div class="caption">{{caption}}</div>
             <!-- <p>Made with &#x2764; by <a href="https://github.com/ashishyadav2">Ashish.</a></p> -->
         </form>
 

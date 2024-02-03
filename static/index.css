@@ -60,6 +60,8 @@ form {
     backdrop-filter: blur(30px);
     /* background-color: transparent; */
     border-radius: 25px;
+    box-shadow: 0 0 50px -10px rgba(0, 0, 0, 0.1);
+
 }
 form h1 {
     font-size: 5rem;
@@ -136,10 +138,13 @@ form .imagebox {
 form .imagebox img{
     width: 100%;
     border-radius: 25px;
-    box-shadow: 0 0 50px -10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 50px -10px rgba(0, 0, 0, 0.2); */
 }
 
-
+#reset_btn {
+    color: var(--text);
+    font-family: var(--font-2);
+}
 input[type="file"]::file-selector-button {
     padding: 0 16px;
     height: 45px;

@@ -9,7 +9,7 @@ from flask import render_template, request, url_for, Flask, redirect, flash
 app = Flask(__name__, static_url_path="/static")
 uploads_dir = os.path.join(os.getcwd(), "static", "uploads")
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
-
+app.config["SECRET_KEY"] = "ashish"
 image_info = {"is_uploaded": False}
 # predict_pipeline_obj = PredictPipeline()
 
@@ -46,13 +46,13 @@ def index():
             image_info["image_file_name"] = image_file_name
             return render_template(
                 "predict.html",
-                caption="Click Generate button to generate caption",
+                caption="",
                 image_path=image_path,
                 file_name=image_file_name,
             )
     return render_template(
         "index.html",
-        caption="Upload Image. :)",
+        caption="",
         image_path=os.path.join("static", "image_placeholder.png"),
         file_name="image_placeholder.png",
     )
@@ -69,7 +69,7 @@ def predict():
     # caption = get_prediction(predict_pipeline_obj, image_file_name)
     caption = "some dummy caption"
     caption = caption.capitalize()
-
+    image_info["is_uploaded"] = False
     return render_template(
         "predict.html",
         caption=caption,
