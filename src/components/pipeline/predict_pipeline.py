@@ -2,7 +2,6 @@ from src.logger import logging
 from src.exception import CustomException
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.preprocessing import image
 import os
 from src.utils import load_object, load_keras_model
 
@@ -30,12 +29,6 @@ class PredictPipeline:
         }
 
     def index_to_word(self, idx):
-        # output_word = None
-        # for word,index in self.tokenizer.word_index.items():
-        #     if index==idx:
-        #         output_word = word
-        #         break
-        # return output_word
         return self.index_word_map[idx]
 
     def predict_caption(self, image_feature):
@@ -61,13 +54,7 @@ class PredictPipeline:
 
     def predict(self, image_name):
         image_id = image_name.split(".")[0]
-        # image_path = os.path.join(os.getcwd(),"media",image_name)
-        # actual_captions = self.image_caption_map[image_id]
         image_feature = self.image_feature_map[image_id]
-        # print("------------Actual captions--------------")
-        # for caption in actual_captions:
-        #     print(caption)
         predicted_caption = self.predict_caption(image_feature)
-        # print("\n------------Predicted caption------------")
         predicted_caption = " ".join(predicted_caption.split()[1:-1]).capitalize()
         return predicted_caption
