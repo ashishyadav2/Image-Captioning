@@ -26,10 +26,12 @@ class DataTransformationConfig:
 class FeatureExtractionModel:
     def __init__(self):
         vgg16_model = VGG16(weights="imagenet")
-        feature_extractor_model = models.Model(
+        self.feature_extractor_model = models.Model(
             inputs=vgg16_model.inputs, outputs=vgg16_model.layers[-2].output
         )
-        return feature_extractor_model
+        
+    def get_model(self):
+        return self.feature_extractor_model
 
 
 class DataTransformation:
@@ -56,6 +58,7 @@ class DataTransformation:
         logging.info("feature extraction started")
         image_feature_map = {}
         feature_extractor_model = FeatureExtractionModel()
+        feature_extractor_model = feature_extractor_model.get_model()
         try:
             for image_name in os.listdir(IMAGE_DIR):
                 img_path = os.path.join(IMAGE_DIR, image_name)
