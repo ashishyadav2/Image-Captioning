@@ -1,2 +1,6 @@
 vgg16_lstm_model_v2.h5 filter=lfs diff=lfs merge=lfs -text
 vgg16_bi_lstm_model_v1.h5 filter=lfs diff=lfs merge=lfs -text
+image_caption_map.pkl filter=lfs diff=lfs merge=lfs -text
+image_feature_map.pkl filter=lfs diff=lfs merge=lfs -text
+all_captions.pkl filter=lfs diff=lfs merge=lfs -text
+data_transformation_config.pkl filter=lfs diff=lfs merge=lfs -text
