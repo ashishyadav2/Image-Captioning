@@ -55,8 +55,8 @@ if __name__ == "__main__":
     train_set,test_set = data_transformation_obj.train_test_split()
     
     
-    model_obj = Model()
-    model = model_obj.get_model()
-    model_trainer_obj = ModelTrainer(train_set,test_set,model)
+    # model_obj = Model()
+    # model = model_obj.get_model()
+    # model_trainer_obj = ModelTrainer(train_set,test_set,model)
     # model_trainer_obj.plot_model_structure()
-    model_trainer_obj.train_model(epochs=25)
+    # model_trainer_obj.train_model(epochs=25)
