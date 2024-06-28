@@ -7,7 +7,7 @@ from src.components.pipeline.predict_pipeline import PredictPipeline
 from flask import render_template, request, url_for, Flask, redirect, flash
 
 app = Flask(__name__, static_url_path="/static")
-uploads_dir = os.path.join(os.getcwd(), "static", "uploads")
+uploads_dir = os.path.join(".", "static", "uploads")
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 image_info = {"is_uploaded": False}
 
@@ -86,4 +86,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", debug=True)
+    app.run(host="0.0.0.0")

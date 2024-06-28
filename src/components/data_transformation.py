@@ -12,7 +12,7 @@ from src.utils import load_object, save_object
 
 @dataclass
 class DataTransformationConfig:
-    DS_PATH: str = os.path.join(os.getcwd(), "artifacts")
+    DS_PATH: str = os.path.join(".", "artifacts")
     image_feature_map: str = os.path.join(DS_PATH, "image_feature_map.pkl")
     image_caption_map: str = os.path.join(DS_PATH, "image_caption_map.pkl")
     data_trans_config: str = os.path.join(DS_PATH, "data_transformation_config.pkl")

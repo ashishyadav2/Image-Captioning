@@ -10,7 +10,7 @@ from src.components.pipeline.predict_pipeline import PredictPipeline
 
 @dataclass
 class DataIngestionConfig:
-    DS_PATH: str = os.path.join(os.getcwd(), "artifacts", "dataset")
+    DS_PATH: str = os.path.join(".", "artifacts", "dataset")
     IMAGE_DIR_PATH: str = os.path.join(DS_PATH, "Images")
     CAPTIONS_FILE_PATH: str = os.path.join(DS_PATH, "captions.txt")
 

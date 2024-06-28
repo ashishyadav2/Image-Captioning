@@ -6,7 +6,7 @@ from src.utils import load_object
 
 class Model:
     def __init__(self):
-        data_transformation_config = load_object(os.path.join(os.getcwd(),"artifacts","data_transformation_config.pkl"))
+        data_transformation_config = load_object(os.path.join(".","artifacts","data_transformation_config.pkl"))
         self.max_caption_len = data_transformation_config.max_caption_len
         self.vocab_size = data_transformation_config.vocab_size
         self.file_path = data_transformation_config.DS_PATH
