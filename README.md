@@ -62,5 +62,5 @@ To enhance the deployment and scalability of this project, Docker is used to con
 5. Open any `browser` and goto `http://127.0.0.1:9000/`
 6. To stop docker container:
     * Open `CMD Prompt` in a new window
-    * `docker ps`:  To get all active container information along container ID
+    * `docker ps`:  To get all active container information along with container ID
     * `docker stop container_id` : Use corresponding container ID to stop container
